@@ -6,11 +6,11 @@ import '../app/globals.css';
 
 interface PerfumeDetailsProps {
   perfumeName: string;
-  perfumeUrl: JSX.Element | string;
+  perfumeUrl: string;
   perfumeInfo: string;
-  noteUrl: string | JSX.Element;
-  heartNoteUrl: string | JSX.Element;
-  baseNoteUrl: string | JSX.Element;
+  noteUrl: string;
+  heartNoteUrl: string;
+  baseNoteUrl: string;
 }
 
 const PerfumeDetails: React.FC<PerfumeDetailsProps> = ({
@@ -21,21 +21,24 @@ const PerfumeDetails: React.FC<PerfumeDetailsProps> = ({
   heartNoteUrl,
   baseNoteUrl,
 }) => {
-  console.log(perfumeUrl)
-  console.log(perfumeInfo)
-  return (
+
+  return perfumeUrl !== '' ? (
     <div className="container">
       <h2>{perfumeName}</h2>
-      <div className="main">{perfumeUrl}</div>
+      <div className="main">
+        <Image src={perfumeUrl} width={360} height={360} alt="Perfume" /></div>
       <div className="picture">
-        <Image src={noteUrl} width="100"/> 
-        <Image src={heartNoteUrl} width="100"/> 
-        <Image src={baseNoteUrl} width="100"/> 
+        <Image src={noteUrl} width={150} height={150} alt="Perfume" />
+        <Image src={heartNoteUrl} width={150} height={150} alt="Perfume" />
+        <Image src={baseNoteUrl} width={150} height={150} alt="Perfume" />
+
       </div>
       <div className="description">{perfumeInfo}</div>
     </div>
-  );
-};
+  ) : (
+    <h2>No results found</h2>
+  )
+}
 
 export default PerfumeDetails;
 

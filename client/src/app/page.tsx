@@ -7,17 +7,16 @@ import PerfumeButton from '../components/PerfumeButton';
 import PerfumeDetails from '../components/PerfumeDetails';
 import SearchBar from '../components/SearchBar';
 import { IIngredient, IEachIngredient } from '../interfaces';
-import Image from 'next/image'
 
 const HomePage: React.FC = () => {
   const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
 
   const [perfumeInfo, setPerfumeInfo] = useState<string>('');
-  const [perfumeUrl, setPerfumeUrl] = useState<JSX.Element | string>('');
+  const [perfumeUrl, setPerfumeUrl] = useState<string>('');
   const [perfumeName, setPerfumeName] = useState<string>('');
-  const [noteUrl, setNoteUrl] = useState<JSX.Element | string>('');
-  const [heartNoteUrl, setHeartNoteUrl] = useState<JSX.Element | string>('');
-  const [baseNoteUrl, setBaseNoteUrl] = useState<JSX.Element | string>('');
+  const [noteUrl, setNoteUrl] = useState<string>('');
+  const [heartNoteUrl, setHeartNoteUrl] = useState<string>('');
+  const [baseNoteUrl, setBaseNoteUrl] = useState<string>('');
   const [isButtonVisible, setButtonVisible] = useState<boolean>(true);
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
   const [isHomeVisible, setIsHomeVisible] = useState<boolean>(false);
@@ -34,33 +33,17 @@ const HomePage: React.FC = () => {
 
     setPerfumeName(ingredient.perfumeName);
     setPerfumeUrl(
-      <Image
-        src={ingredient.url}
-        style={{ width: '360px', height: 'auto' }}
-        alt="Perfume"
-      />
+      ingredient.url
     );
     setPerfumeInfo(ingredient.description);
     setNoteUrl(
-      <Image
-        src={ingredient.noteUrl}
-        style={{ width: '150px', height: 'auto' }}
-        alt="Note"
-      />
+      ingredient.noteUrl
     );
     setHeartNoteUrl(
-      <Image
-        src={ingredient.heartNoteUrl}
-        style={{ width: '150px', height: 'auto' }}
-        alt="Heart Note"
-      />
+      ingredient.heartNoteUrl
     );
     setBaseNoteUrl(
-      <Image
-        src={ingredient.baseNoteUrl}
-        style={{ width: '150px', height: 'auto' }}
-        alt="Base Note"
-      />
+      ingredient.baseNoteUrl
     );
     setButtonVisible(false);
     setIsHeaderVisible(false);
@@ -75,33 +58,17 @@ const HomePage: React.FC = () => {
     if (searchResult) {
       setPerfumeName(searchResult.perfumeName);
       setPerfumeUrl(
-        <Image
-          src={searchResult.url}
-          style={{ width: '360px', height: 'auto' }}
-          alt="Perfume"
-        />
+        searchResult.url
       );
       setPerfumeInfo(searchResult.description);
       setNoteUrl(
-        <Image
-          src={searchResult.noteUrl}
-          style={{ width: '150px', height: 'auto' }}
-          alt="Note"
-        />
+       searchResult.noteUrl
       );
       setHeartNoteUrl(
-        <Image
-          src={searchResult.heartNoteUrl}
-          style={{ width: '150px', height: 'auto' }}
-          alt="Heart Note"
-        />
+        searchResult.heartNoteUrl
       );
       setBaseNoteUrl(
-        <Image
-          src={searchResult.baseNoteUrl}
-          style={{ width: '150px', height: 'auto' }}
-          alt="Base Note"
-        />
+       searchResult.baseNoteUrl
       );
       setButtonVisible(false);
       setIsHeaderVisible(false);
