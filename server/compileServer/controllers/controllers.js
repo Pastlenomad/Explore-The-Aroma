@@ -12,7 +12,8 @@ import { Parfume } from '../models/schemas/parfumeSchema.js';
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const parfumes = yield Parfume.find();
-        res.json(parfumes);
+        console.log(parfumes)
+        res.status(201).json(parfumes);
     }
     catch (e) {
         console.error(e);

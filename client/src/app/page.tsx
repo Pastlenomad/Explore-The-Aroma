@@ -1,6 +1,6 @@
 'use client'
-import React, { useState } from 'react';
-import { ingredientList } from '../data';
+import React, { useState, useEffect } from 'react';
+import { fetchParfume } from '../../api/fetch';
 import './globals.css';
 import PerfumeButton from '../components/PerfumeButton';
 import PerfumeDetails from '../components/PerfumeDetails';
@@ -9,6 +9,7 @@ import { IIngredient } from '../interfaces';
 import Image from 'next/image'
 
 const HomePage: React.FC = () => {
+  const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
   const [perfumeInfo, setPerfumeInfo] = useState<string>('');
   const [perfumeUrl, setPerfumeUrl] = useState<JSX.Element | string>('');
   const [perfumeName, setPerfumeName] = useState<string>('');
@@ -19,6 +20,10 @@ const HomePage: React.FC = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
   const [isHomeVisible, setIsHomeVisible] = useState<boolean>(false);
 
+  useEffect(() => {
+    fetchParfume()
+    .then((parfume) => setIngredientList(parfume)) 
+  },[]);
 
   const handleButtonClick = (index: number) => {
     const ingredient: IIngredient = ingredientList[index];

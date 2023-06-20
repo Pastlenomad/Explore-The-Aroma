@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { Parfume } from "./schemas/parfumeSchema.js";
 import { parfumeList } from "./data/parfumeList.js";
 const dbName = 'parfume';
-let dataCopied = false;
+let dataCopied = true;
 mongoose.connect(`mongodb://localhost:27017/${dbName}`)
     .then(() => {
     console.log('Connected to MongoDB');

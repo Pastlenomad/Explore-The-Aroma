@@ -6,7 +6,7 @@ import { Request, Response } from 'express';
 const getAll = async (req: Request, res: Response): Promise<void> => {
   try {
     const parfumes = await Parfume.find();
-    res.json(parfumes);
+    res.status(201).send(parfumes);
   } catch (e) {
     console.error(e);
     res.status(500).send('Error occurred while fetching data');
