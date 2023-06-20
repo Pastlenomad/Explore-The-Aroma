@@ -1,57 +1,49 @@
 'use client'
-import React, { useState } from 'react';
-import { ingredientList } from '../data';
+import React, { useState, useEffect } from 'react';
+import { fetchParfume } from '../../api/fetch';
+import {ingredientData} from '../data';
 import './globals.css';
 import PerfumeButton from '../components/PerfumeButton';
 import PerfumeDetails from '../components/PerfumeDetails';
 import SearchBar from '../components/SearchBar';
-import { IIngredient } from '../interfaces';
-import Image from 'next/image'
+import { IIngredient, IEachIngredient } from '../interfaces';
 
 const HomePage: React.FC = () => {
+  const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
+
   const [perfumeInfo, setPerfumeInfo] = useState<string>('');
-  const [perfumeUrl, setPerfumeUrl] = useState<JSX.Element | string>('');
+  const [perfumeUrl, setPerfumeUrl] = useState<string>('');
   const [perfumeName, setPerfumeName] = useState<string>('');
-  const [noteUrl, setNoteUrl] = useState<JSX.Element | string>('');
-  const [heartNoteUrl, setHeartNoteUrl] = useState<JSX.Element | string>('');
-  const [baseNoteUrl, setBaseNoteUrl] = useState<JSX.Element | string>('');
+  const [noteUrl, setNoteUrl] = useState<string>('');
+  const [heartNoteUrl, setHeartNoteUrl] = useState<string>('');
+  const [baseNoteUrl, setBaseNoteUrl] = useState<string>('');
   const [isButtonVisible, setButtonVisible] = useState<boolean>(true);
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
   const [isHomeVisible, setIsHomeVisible] = useState<boolean>(false);
 
+  useEffect(() => {
+    fetchParfume()
+    .then((dataParfume) => {
+      setIngredientList(dataParfume);
+    }) 
+  },[]);
 
   const handleButtonClick = (index: number) => {
     const ingredient: IIngredient = ingredientList[index];
 
     setPerfumeName(ingredient.perfumeName);
     setPerfumeUrl(
-      <Image
-        src={ingredient.url}
-        style={{ width: '360px', height: 'auto' }}
-        alt="Perfume"
-      />
+      ingredient.url
     );
     setPerfumeInfo(ingredient.description);
     setNoteUrl(
-      <Image
-        src={ingredient.noteUrl}
-        style={{ width: '150px', height: 'auto' }}
-        alt="Note"
-      />
+      ingredient.noteUrl
     );
     setHeartNoteUrl(
-      <Image
-        src={ingredient.heartNoteUrl}
-        style={{ width: '150px', height: 'auto' }}
-        alt="Heart Note"
-      />
+      ingredient.heartNoteUrl
     );
     setBaseNoteUrl(
-      <Image
-        src={ingredient.baseNoteUrl}
-        style={{ width: '150px', height: 'auto' }}
-        alt="Base Note"
-      />
+      ingredient.baseNoteUrl
     );
     setButtonVisible(false);
     setIsHeaderVisible(false);
@@ -66,33 +58,17 @@ const HomePage: React.FC = () => {
     if (searchResult) {
       setPerfumeName(searchResult.perfumeName);
       setPerfumeUrl(
-        <Image
-          src={searchResult.url}
-          style={{ width: '360px', height: 'auto' }}
-          alt="Perfume"
-        />
+        searchResult.url
       );
       setPerfumeInfo(searchResult.description);
       setNoteUrl(
-        <Image
-          src={searchResult.noteUrl}
-          style={{ width: '150px', height: 'auto' }}
-          alt="Note"
-        />
+       searchResult.noteUrl
       );
       setHeartNoteUrl(
-        <Image
-          src={searchResult.heartNoteUrl}
-          style={{ width: '150px', height: 'auto' }}
-          alt="Heart Note"
-        />
+        searchResult.heartNoteUrl
       );
       setBaseNoteUrl(
-        <Image
-          src={searchResult.baseNoteUrl}
-          style={{ width: '150px', height: 'auto' }}
-          alt="Base Note"
-        />
+       searchResult.baseNoteUrl
       );
       setButtonVisible(false);
       setIsHeaderVisible(false);
@@ -125,13 +101,13 @@ const HomePage: React.FC = () => {
         {isHomeVisible && (
           <button className="home" onClick={handleHomeClick}>Back to home</button>
         )}
-        {isButtonVisible && ingredientList.map((ingredient: IIngredient, index: number) => (
+        {isButtonVisible && ingredientData.map((ingredient: IEachIngredient, index: number) => (
           <PerfumeButton
             key={index}
             onClick={() =>
               handleButtonClick(index)}
             imageUrl={ingredient.url}
-            ingredient={ingredient.perfumeName}
+            ingredient={ingredient.ingredientName}
           />
 
         ))}

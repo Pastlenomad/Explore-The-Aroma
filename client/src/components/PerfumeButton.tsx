@@ -1,6 +1,8 @@
 'use client'
 import React, { MouseEventHandler } from 'react';
 import Image from 'next/image';
+import '../app/globals.css';
+
 
 interface PerfumeButtonProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
