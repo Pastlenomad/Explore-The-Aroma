@@ -1,15 +1,17 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { fetchParfume } from '../../api/fetch';
+import {ingredientData} from '../data';
 import './globals.css';
 import PerfumeButton from '../components/PerfumeButton';
 import PerfumeDetails from '../components/PerfumeDetails';
 import SearchBar from '../components/SearchBar';
-import { IIngredient } from '../interfaces';
+import { IIngredient, IEachIngredient } from '../interfaces';
 import Image from 'next/image'
 
 const HomePage: React.FC = () => {
   const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
+
   const [perfumeInfo, setPerfumeInfo] = useState<string>('');
   const [perfumeUrl, setPerfumeUrl] = useState<JSX.Element | string>('');
   const [perfumeName, setPerfumeName] = useState<string>('');
@@ -22,7 +24,9 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     fetchParfume()
-    .then((parfume) => setIngredientList(parfume)) 
+    .then((dataParfume) => {
+      setIngredientList(dataParfume);
+    }) 
   },[]);
 
   const handleButtonClick = (index: number) => {
@@ -130,13 +134,13 @@ const HomePage: React.FC = () => {
         {isHomeVisible && (
           <button className="home" onClick={handleHomeClick}>Back to home</button>
         )}
-        {isButtonVisible && ingredientList.map((ingredient: IIngredient, index: number) => (
+        {isButtonVisible && ingredientData.map((ingredient: IEachIngredient, index: number) => (
           <PerfumeButton
             key={index}
             onClick={() =>
               handleButtonClick(index)}
             imageUrl={ingredient.url}
-            ingredient={ingredient.perfumeName}
+            ingredient={ingredient.ingredientName}
           />
 
         ))}

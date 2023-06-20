@@ -7,3 +7,8 @@ export interface IIngredient {
   heartNoteUrl: string;
   baseNoteUrl: string;
 }
+
+export interface IEachIngredient {
+  ingredientName: string;
+  url: string;
+}
