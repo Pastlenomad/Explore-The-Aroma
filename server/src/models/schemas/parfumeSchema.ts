@@ -1,7 +1,7 @@
 'use strict';
 
 import { Schema } from "mongoose";
-import db from "../index.js"
+import db from "../index"
 
 
 interface Iparfume extends Document {

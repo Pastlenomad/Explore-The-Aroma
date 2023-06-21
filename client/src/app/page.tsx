@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
     fetchParfume()
     .then((dataParfume) => {
       setIngredientList(dataParfume);
-    }) 
+    })
   },[]);
 
   const handleButtonClick = (index: number) => {

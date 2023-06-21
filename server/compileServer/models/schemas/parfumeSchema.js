@@ -1,6 +1,11 @@
 'use strict';
-import db from "../index.js";
-const ParfumeSchema = new db.Schema({
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Parfume = void 0;
+const index_1 = __importDefault(require("../index"));
+const ParfumeSchema = new index_1.default.Schema({
     name: {
         type: String, required: true
     },
@@ -23,5 +28,5 @@ const ParfumeSchema = new db.Schema({
         type: String, required: true
     }
 });
-const Parfume = db.model('Parfume', ParfumeSchema);
-export { Parfume };
+const Parfume = index_1.default.model('Parfume', ParfumeSchema);
+exports.Parfume = Parfume;

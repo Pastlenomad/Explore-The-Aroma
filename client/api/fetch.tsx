@@ -1,4 +1,4 @@
-export const fetchParfume = async () => {
+export async function fetchParfume(){
     try{
     const res = await fetch('http://localhost:3001/');
     const data = await res.json();

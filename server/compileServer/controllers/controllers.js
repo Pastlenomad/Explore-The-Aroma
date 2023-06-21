@@ -8,18 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Parfume } from '../models/schemas/parfumeSchema.js';
+Object.defineProperty(exports, "__esModule", { value: true });
+const parfumeSchema_1 = require("../models/schemas/parfumeSchema");
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const parfumes = yield Parfume.find();
-        console.log(parfumes)
-        res.status(201).json(parfumes);
+        const parfumes = yield parfumeSchema_1.Parfume.find();
+        res.status(201).send(parfumes);
     }
     catch (e) {
         console.error(e);
         res.status(500).send('Error occurred while fetching data');
     }
 });
-export default {
+exports.default = {
     getAll,
 };

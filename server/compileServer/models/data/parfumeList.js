@@ -1,5 +1,7 @@
 'use strict';
-export const parfumeList = [
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.parfumeList = void 0;
+exports.parfumeList = [
     {
         name: "Vanilla Anise orchid",
         perfumeName: "Jo Malone Vanilla & Anise Cologne",

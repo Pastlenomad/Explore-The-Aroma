@@ -1,13 +1,16 @@
 'use strict';
-import mongoose from 'mongoose';
-import { Parfume } from "./schemas/parfumeSchema.js";
-import { parfumeList } from "./data/parfumeList.js";
-const dbName = 'parfume';
-let dataCopied = true;
-mongoose.connect(`mongodb://localhost:27017/${dbName}`)
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const parfumeSchema_1 = require("./schemas/parfumeSchema");
+const parfumeList_1 = require("./data/parfumeList");
+let dataCopied = false;
+mongoose_1.default.connect(`mongodb+srv://main:erban@main.qnqycrw.mongodb.net/`)
     .then(() => {
     console.log('Connected to MongoDB');
-    Promise.all(parfumeList.map((data) => Parfume.create(data)))
+    Promise.all(parfumeList_1.parfumeList.map((data) => parfumeSchema_1.Parfume.create(data)))
         .then(() => {
         if (dataCopied) {
             console.log('Data saved successfully');
@@ -21,4 +24,4 @@ mongoose.connect(`mongodb://localhost:27017/${dbName}`)
     .catch(error => {
     console.error('Error connecting to MongoDB:', error);
 });
-export default mongoose;
+exports.default = mongoose_1.default;

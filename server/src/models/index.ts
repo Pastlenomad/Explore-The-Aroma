@@ -1,18 +1,17 @@
 'use strict'
 import mongoose from 'mongoose';
-import { Parfume } from "./schemas/parfumeSchema.js";
-import { parfumeList } from "./data/parfumeList.js";
-const dbName = 'parfume';
+import { Parfume } from "./schemas/parfumeSchema";
+import { parfumeList } from "./data/parfumeList";
 let dataCopied = false;
 
-mongoose.connect(`mongodb://localhost:27017/${dbName}`)
+mongoose.connect(`mongodb+srv://main:erban@main.qnqycrw.mongodb.net/`)
     .then(() => {
     console.log('Connected to MongoDB');
     Promise.all(parfumeList.map((data) => Parfume.create(data)))
             .then(() => {
                 if (dataCopied) {
                     console.log('Data saved successfully');
-                dataCopied = false;                
+                dataCopied = false;
             }
             })
         .catch(error => {

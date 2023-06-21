@@ -1,8 +1,10 @@
 {
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "target" : "es6",
-        "outDir" : "compileServer"
-    },
-    "include": ["src/**/*.ts"]
+  "compilerOptions": {
+      "moduleResolution": "node",
+      "target" : "ES2016",
+      "outDir" : "compileServer",
+      "esModuleInterop": true,
+      "module": "commonjs"
+  },
+  "include": ["src/**/*"]
 }
