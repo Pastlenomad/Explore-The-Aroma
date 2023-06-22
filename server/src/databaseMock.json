@@ -1,0 +1,24 @@
+[
+  {
+      "_id": "64924805b77d2c956c3c7948",
+      "name": "bergamot marigold jasmine sambac resin",
+      "perfumeName": "Jo Malone Jasmine Sambac & Marigold Cologne Intense",
+      "description": "As dawn rises, coveted buds of jasmine sambac are picked from Tamil Nadu’s peaceful fields and transported to the bustling flower market. Their potent floralcy contrasts with vibrant marigold, enveloped in the warmth of vanilla and amber. Enticing and opulent.",
+      "url": "https://www.jomalone.co.uk/media/export/cms/products/1000x1000/jo_sku_LGX101_1000x1000_0.png",
+      "noteUrl": "https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Marigold_Desktop.png",
+      "heartNoteUrl": "https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Jasmine_Sambac_Desktop.png",
+      "baseNoteUrl": "https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Benzoin_Resin_Desktop.png",
+      "__v": 0
+  },
+  {
+      "_id": "64924805b77d2c956c3c7949",
+      "name": "bergamot",
+      "perfumeName": "Parfums de Marly Paris VALAYA EAU DE PARFUM",
+      "description": "Fresh top notes as bergamot, mandarin and sweet white peach, lead to a blend of white flowers, settling on musk and ambrofix sensual base notes.",
+      "url": "https://pastlenomad.github.io/Pictures/Valaya-bergamote.png",
+      "noteUrl": "https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Mandarin_Desktop.png",
+      "heartNoteUrl": "https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Clementine_Flower_Desktop.png",
+      "baseNoteUrl": "https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Bergamot_Desktop.png",
+      "__v": 0
+  }
+]

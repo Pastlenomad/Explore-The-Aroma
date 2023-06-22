@@ -18,8 +18,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className="search">
-      <form onSubmit={handleSubmit}>
+    <div  className="search">
+      <form id="search-bar" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="&#128269;"
