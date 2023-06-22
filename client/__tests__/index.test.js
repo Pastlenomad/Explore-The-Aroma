@@ -7,7 +7,6 @@ import {
   fireEvent,
 } from "@testing-library/react";
 import HomePage from "../src/app/page";
-import PerfumeDetails from "../src/components/PerfumeDetails";
 import "@testing-library/jest-dom";
 import { mockData } from "../src/app/parfumeData";
 
@@ -22,25 +21,25 @@ beforeEach(() => {
 });
 
 describe("Front-End Testing", () => {
-  it("renders the header", () => {
+  it("Renders the HomePage properly", () => {
     render(<HomePage />);
     const header = screen.getByRole("heading");
     expect(header).toBeInTheDocument();
   });
 
-  it("renders the perfume button components", () => {
+  it("Renders the ingredients' button components properly", () => {
     render(<HomePage />);
     const buttonElements = screen.getAllByRole("button");
     expect(buttonElements.length).toBeGreaterThan(0);
   });
 
-  it("renders the search bar", () => {
+  it("Renders the search bar properly", () => {
     render(<HomePage />);
     const searchBarElement = screen.getByRole("textbox");
     expect(searchBarElement).toBeInTheDocument();
   });
 
-  it("makes sure the search bar is working properly for example when changing its value", async () => {
+  it("Our Search Bar is working properly", async () => {
     render(<HomePage />);
     const searchBarElement = screen.getByRole("textbox");
     await act(async () => {
@@ -49,7 +48,7 @@ describe("Front-End Testing", () => {
     });
   });
 
-  it("correctly fetches data from our backend", async () => {
+  it("Data is fetched correctly from our backend", async () => {
     await act(async () => {
       render(<HomePage />);
     });
