@@ -1,6 +1,4 @@
 # Explore-The-Aroma
 
-go to client folder and run npm start
-
-I have only done it in React and Vanilla CSS, back end is not connected at the moment.
-This project is like a template at the moment and I am planning to add other features in the future.
+Client Side -> cd client -> npm install -> "npm run dev" for development build (recommended) -> "npm run test" for testing
+Server Side -> cd server -> npm install -> "npm run build" -> "npm run start" for starting server  -> "npm run test" for testing
