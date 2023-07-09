@@ -1,6 +1,9 @@
 # Explore-The-Aroma
+This app helps user to find a perfume from their chosen ingredient.
 
+
+To start front end
 go to client folder and run npm start
 
-I have only done it in React and Vanilla CSS, back end is not connected at the moment.
-This project is like a template at the moment and I am planning to add other features in the future.
+To start back end 
+got to server folder and run npx nodemon
