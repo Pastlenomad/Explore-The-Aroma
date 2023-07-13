@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
-import { ingredientList } from './data.js';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-
 import PerfumeButton from './Components/PerfumeButton.js';
 import PerfumeDetails from './Components/PerfumeDetails.js';
 import SearchBar from './Components/SearchBar.js';
 
 export default function PerfumeResult() {
-
-  
+  const [perfumeList, setPerfumeList] = useState([]);
   const [perfumeInfo, setPerfumeInfo] = useState('');
   const [perfumeUrl, setPerfumeUrl] = useState('');
   const [perfumeName, setPerfumeName] = useState('');
   const [noteUrl, setNoteUrl] = useState('');
   const [heartNoteUrl, setHeartNoteUrl] = useState('');
   const [baseNoteUrl, setBaseNoteUrl] = useState('');
-  const [isButtonVisible, setButtonVisible] = useState(true); //button will be visible on the main page by setting it true
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true); //header will be visible on the main page by setting it true
-  const [isHomeVisible, setIsHomeVisible] = useState(false); //I want home button on result page so that user can go back to main page it will be hidden in the beginning by setting it false
+  const [isButtonVisible, setButtonVisible] = useState(true);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [isHomeVisible, setIsHomeVisible] = useState(false);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:3000/perfumes')
+      .then((response) => response.json())
+      .then((data) => setPerfumeList(data))
+      .catch((error) => console.error('error'));
+  }, []);
 
   const handleButtonClick = (index) => {
-    const ingredient = ingredientList[index];
-    
-    
+    const ingredient = perfumeList[index];
 
     setPerfumeName(ingredient.perfumeName);
     setPerfumeUrl(
@@ -57,12 +59,11 @@ export default function PerfumeResult() {
 
     setButtonVisible(false);
     setIsHeaderVisible(false);
-    setIsHomeVisible(true); // Show the home button
+    setIsHomeVisible(true);
   };
 
   const handleSearch = (searchQuery) => {
-    
-    const searchResult = ingredientList.find((ingredient) =>
+    const searchResult = perfumeList.find((ingredient) =>
       ingredient.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -100,9 +101,8 @@ export default function PerfumeResult() {
 
       setButtonVisible(false);
       setIsHeaderVisible(false);
-      setIsHomeVisible(true); // Show the home button
+      setIsHomeVisible(true);
     } else {
-      
       setPerfumeName('No results found');
       setPerfumeUrl('');
       setPerfumeInfo('');
@@ -112,122 +112,53 @@ export default function PerfumeResult() {
 
       setButtonVisible(false);
       setIsHeaderVisible(false);
-      setIsHomeVisible(true); 
+      setIsHomeVisible(true);
     }
   };
 
   const handleHomeClick = () => {
     setButtonVisible(true);
     setIsHeaderVisible(true);
-    setIsHomeVisible(false); 
+    setIsHomeVisible(false);
   };
-
-  
-
 
   return (
     <>
-     {isHeaderVisible && <h1>Explore the Aroma <br /> <br /> <SearchBar onSearch={handleSearch} /> </h1>}
-     
+      {isHeaderVisible && (
+        <h1>
+          Explore the Aroma <br /> <br />{' '}
+          <SearchBar onSearch={handleSearch} />{' '}
+        </h1>
+      )}
+
       <div id="ingredients">
-        
         {isHomeVisible && (
-              <button className="home" onClick={handleHomeClick}>Back to home</button>
-            )}
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(0)}
-            imageUrl="https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Star_Anise_Desktop.png"
-            ingredient="Star Anise"
-          />
-        )}
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(1)}
-            imageUrl="https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Red_Roses_Accord_Desktop.png"
-            ingredient="Rose"
-          />
-        )}
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(2)}
-            imageUrl="https://www.jomalone.co.uk/media/export/cms/spp/tasing_notes/desktop/Marigold_Desktop.png"
-            ingredient="Marigold"
-          />
-        )}
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(3)}
-            imageUrl="https://pastlenomad.github.io/Pictures/Bergamot_Desktop.avif"
-            ingredient="Bergamot"
-          />
-        )}
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(4)}
-            imageUrl="https://pastlenomad.github.io/Pictures/Wild_Achillea_Mobile.avif"
-            ingredient="Wild Achillea"
-          />
+          <button className="home" onClick={handleHomeClick}>
+            Back to home
+          </button>
         )}
 
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(5)}
-            imageUrl="https://pastlenomad.github.io/Pictures/Cypress_Desktop.avif"
-            ingredient="Cypress"
-          />
-        )}
-
-       {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(6)}
-            imageUrl="https://pastlenomad.github.io/Pictures/English_Lavender_Desktop.png"
-            ingredient="Lavender"
-          />
-        )}  
-
-       {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(7)}
-            imageUrl="https://pastlenomad.github.io/Pictures/Tuberose_Desktop.avif"
-            ingredient="Tuberose"
-          />
-        )}  
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(8)}
-            imageUrl="https://pastlenomad.github.io/Pictures/Patchouli.avif"
-            ingredient="Patchouli"
-          />
-        )} 
-        {isButtonVisible && (
-          <PerfumeButton
-            onClick={() => handleButtonClick(9)}
-            imageUrl="https://pastlenomad.github.io/Pictures/Tonka_Bean_Desktop.avif"
-            ingredient="Tonka"
-          />
-        )} 
-        
-        
-        {!isButtonVisible &&  (
-          
-          <>
-          
-            <PerfumeDetails
-              perfumeName={perfumeName}
-              perfumeUrl={perfumeUrl}
-              perfumeInfo={perfumeInfo}
-              noteUrl={noteUrl}
-              heartNoteUrl={heartNoteUrl}
-              baseNoteUrl={baseNoteUrl}
+        {isButtonVisible &&
+          perfumeList.map((perfume, index) => (
+            <PerfumeButton
+              key={index}
+              onClick={() => handleButtonClick(index)}
+              imageUrl={perfume.noteUrl}
+              ingredient={perfume.name}
             />
-          
-          </>
+          ))}
+
+        {!isButtonVisible && (
+          <PerfumeDetails
+            perfumeName={perfumeName}
+            perfumeUrl={perfumeUrl}
+            perfumeInfo={perfumeInfo}
+            noteUrl={noteUrl}
+            heartNoteUrl={heartNoteUrl}
+            baseNoteUrl={baseNoteUrl}
+          />
         )}
-        
       </div>
     </>
   );
 }
-
-
