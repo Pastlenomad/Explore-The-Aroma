@@ -7,7 +7,7 @@ import PerfumeButton from '../components/PerfumeButton';
 import PerfumeDetails from '../components/PerfumeDetails';
 import SearchBar from '../components/SearchBar';
 import { IIngredient, IEachIngredient } from '../interfaces';
-
+import { UserButton, useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
 const HomePage: React.FC = () => {
   const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
 
@@ -27,6 +27,7 @@ const HomePage: React.FC = () => {
       setIngredientList(dataParfume);
     })
   },[]);
+  const user = useUser();
 
   const handleButtonClick = (index: number) => {
     const ingredient: IIngredient = ingredientList[index];
@@ -94,12 +95,30 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+    {user.isSignedIn ? (
+          <div className="clerk-buttons-div">
+            <UserButton  afterSignOutUrl="/"/>
+          </div>
+        ) : (
+          <div className="clerk-buttons-div">
+            <SignInButton mode="modal">
+              <button
+                className="all clerk-buttons"
+              >
+                Sign In
+              </button>
+            </SignInButton>
+          </div>
+        )}
+
+
+
       {isHeaderVisible && <h1>Explore the Aroma <br /> <br /> <SearchBar onSearch={handleSearch} /> </h1>}
 
-      <div id="ingredients">
+      <div id="ingredients" className='all'>
 
         {isHomeVisible && (
-          <button className="home" onClick={handleHomeClick}>Back to home</button>
+          <button className="home all" onClick={handleHomeClick}>Back to home</button>
         )}
         {isButtonVisible && ingredientData.map((ingredient: IEachIngredient, index: number) => (
           <PerfumeButton

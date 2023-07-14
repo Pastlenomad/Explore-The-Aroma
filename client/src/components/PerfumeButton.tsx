@@ -12,7 +12,7 @@ interface PerfumeButtonProps {
 
 const PerfumeButton: React.FC<PerfumeButtonProps> = ({ onClick, imageUrl, ingredient }) => {
   return (
-    <button className="frontFace" onClick={onClick}>
+    <button className="frontFace all" onClick={onClick}>
       <Image src={imageUrl} alt="Perfume Button" width={200} height={200}  className='mainImg'/>
       <span className="reveal">{ingredient}</span>
     </button>

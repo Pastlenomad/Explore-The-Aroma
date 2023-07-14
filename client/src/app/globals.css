@@ -12,36 +12,36 @@ code {
     monospace;
 }
 
-*{
+.all{
   background-color: rgb(242, 234, 226);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: rgb(124, 94, 61);
   }
-  
+
   h1{
   text-align: center;
   margin-top: 100px;
   border-style: none;
   font-weight: 9000px;
-  
+
   }
-  
+
   h2{
     text-align: center;
   }
-  
+
   .main{
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .picture{
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .description{
     width: 600px;
     height: 200px;
@@ -49,21 +49,21 @@ code {
     display: flex;
     margin-left: 350px;
   }
-  
+
   #ingredients{
     margin-left: 120px;
     width: 1200px;
     height: auto;
   }
-  
+
   #ingredients button{
   border: none;
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  
+
   }
-  
+
   .search input[type="text"]{
     padding: 16px 8px;
     border: none;
@@ -75,28 +75,28 @@ code {
     width: 500px;
     background-color: transparent;
   }
-  
-  
+
+
   .home{
     align-items: center;
     margin-top: 50px;
     /* font-weight: bold; */
     font-size: large;
   }
-  
+
   .mainImg{
     width: 220px;
     height: auto;
   }
-  
+
   .frontFace{
     position: relative;
     /* display: inline-block;
     cursor: pointer; */
   }
-  
+
   .reveal {
-    
+
     visibility: hidden;
     background-color: transparent;
     color: rgb(124, 94, 61);
@@ -118,11 +118,38 @@ code {
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.5s;
-    
+
   }
-  
+
   .frontFace:hover .reveal {
     visibility: visible;
     opacity: 1;
   }
-  
+
+.sign-in-up{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.sign-in-up-inner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+.clerk-buttons-div{
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-right: 40px;
+
+}
+.clerk-buttons{
+  font-size: large;
+  border: none;
+  cursor: pointer;
+}

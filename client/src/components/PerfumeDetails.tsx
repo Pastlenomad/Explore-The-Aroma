@@ -23,7 +23,7 @@ const PerfumeDetails: React.FC<PerfumeDetailsProps> = ({
 }) => {
 
   return perfumeUrl !== '' ? (
-    <div className="container">
+    <div className="container all">
       <h2>{perfumeName}</h2>
       <div className="main">
         <Image src={perfumeUrl} width={360} height={360} alt="Perfume" /></div>
