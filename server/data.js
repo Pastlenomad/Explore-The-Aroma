@@ -44,7 +44,7 @@ db.once('open', async () => {
     description: 'Fresh top notes as bergamot, mandarin and sweet white peach, lead to a blend of white flowers, settling on musk and ambrofix sensual base notes.',
     url: 'https://pastlenomad.github.io/Pictures/Valaya-bergamote.png',
     noteUrl: 'https://pastlenomad.github.io/Pictures/Mandarin_Desktop.png.avif',
-    heartNoteUrl: 'https://pastlenomad.github.io/Pictures/Clementine_Flower_Desktop.png',
+    heartNoteUrl: 'https://pastlenomad.github.io/Pictures/Bergamot_Desktop.avif',
     baseNoteUrl: 'https://pastlenomad.github.io/Pictures/Peach_Desktop.png.avif'
   }, {
     name: 'Achillea',

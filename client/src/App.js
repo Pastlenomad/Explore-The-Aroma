@@ -3,6 +3,12 @@ import './App.css';
 import PerfumeButton from './Components/PerfumeButton.js';
 import PerfumeDetails from './Components/PerfumeDetails.js';
 import SearchBar from './Components/SearchBar.js';
+// import { ClerkProvider } from "@clerk/clerk-react";
+
+// if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
+//   throw new Error("Missing Publishable Key")
+// }
+// const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 export default function PerfumeResult() {
   const [perfumeList, setPerfumeList] = useState([]);
@@ -124,6 +130,9 @@ export default function PerfumeResult() {
 
   return (
     <>
+    {/* <ClerkProvider publishableKey={clerkPubKey}>
+      <div>Hello from clerk</div>
+    </ClerkProvider> */}
       {isHeaderVisible && (
         <h1>
           Explore the Aroma <br /> <br />{' '}
